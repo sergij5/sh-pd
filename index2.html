@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color with Keyboard</title>
+</head>
+<body>
+    <canvas id="canv" width="600" height="400"></canvas>
+    <h1>KUB</h1>
+    <p>ЭТО КУБ </p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Hexahedron.svg/500px-Hexahedron.svg.png" height="90" width="90">
+    <a href="https://youtu.be/Llximmz38iY?si=8kqomDNJRRPvjXXx">link</a>
+    <ul>
+        <li>Kub ORIGINAL</li>
+        <li>KUB2</li>
+        <li>KUB3</li>
+        <li>KUB4</li>
+      </ul>
+    <script>
+        const canv = document.getElementById('canv');
+        const ctx = canv.getContext('2d');
+
+        let x = 0;
+        let y = 0;
+        const squareSize = 100;
+
+        let squareColor = 'black'; 
+
+        function draw() {
+            ctx.fillStyle = 'pink'; 
+            ctx.fillRect(0, 0, canv.width, canv.height);
+
+            ctx.fillStyle = squareColor;
+            ctx.fillRect(x, y, squareSize, squareSize);
+        }
+
+        function move(event) {
+            switch (event.code) {
+                case "ArrowRight": x += 10; break;
+                case "ArrowLeft":  x -= 10; break;
+                case "ArrowDown":  y += 10; break;
+                case "ArrowUp":    y -= 10; break;
+
+                case "KeyB":
+                    squareColor = "black";
+                    break;
+
+                case "KeyG":
+                    squareColor = "green";
+                    break;
+
+                case "KeyO": 
+                    squareColor = "orange";
+                    break;
+            }
+        }
+
+        document.addEventListener("keydown", move);
+        setInterval(draw, 50);
+    </script>
+</body>
+</html>
